@@ -1,6 +1,6 @@
 Все задачи выполняла в Google collab, файл подключила из гугл диска
-
-
+ссылка на блокнот 
+https://colab.research.google.com/drive/1vdmXhvYLISW-os_Yj4NxHTVrb-FmJo9c?usp=sharing
 
 import pandas as pd
 import numpy as np
