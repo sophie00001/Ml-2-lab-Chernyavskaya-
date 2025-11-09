@@ -1,0 +1,66 @@
+Все задачи выполняла в Google collab, файл подключила из гугл диска
+
+
+
+import pandas as pd
+import numpy as np
+from google.colab import drive
+
+# Загрузка данных
+drive.mount('/content/drive')
+file_path = '/content/drive/MyDrive/Colab Notebooks/titanic.csv'
+
+try:
+    df = pd.read_csv(file_path)
+    print(f"Файл загружен успешно!")
+except FileNotFoundError:
+    print(f"Ошибка: Файл не найден по пути: {file_path}. Проверьте правильность пути.")
+except Exception as e:
+    print(f"Произошла ошибка при чтении файла: {e}")
+
+
+#решение первых 3х задач 
+
+# Вывод первых 5 строк данных
+display(df.head())
+# Общая информация о данных
+df.info()
+# Проверка на наличие NaN
+display(df.isna().sum())
+# Заполнение NaN значением (например, 0)
+df_filled = df.fillna(0)
+# проверяем, остались ли NaN
+display(df_filled.isna().sum())
+# Удаление строк с NaN
+df_dropped = df.dropna()
+display(df_dropped.isna().sum())
+
+# Выбор одного столбца
+df['Age']
+# Выбор нескольких столбцов
+df[['Name', 'Age']]
+# Выбор строк по индексу
+df.loc[10]
+# строки с 5 по 15 включительно
+df.loc[5:15]
+
+
+# Выбор строк и столбцов по условию
+df[(df['Sex'] == 'male') & (df['Age'] > 30)]
+#Сортировка по возрастанию
+df.sort_values('Age')
+# Группировка выживших
+df.groupby('Pclass')['Survived'].mean()
+
+#решение 4й задачи
+
+df.isna().sum()
+df = df.fillna(0)
+df.isna().sum()
+df.head(10)
+age_over_30 = df[df['Age'] > 30]
+age_over_30
+sorted_by_fare = df.sort_values('Fare', ascending=False)
+sorted_by_fare
+df.groupby('Pclass')['Age'].mean()
+df
